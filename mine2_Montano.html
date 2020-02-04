@@ -30,8 +30,8 @@ Updated 28 August 2019 to add a link to "The Ferranti Mark 1 Gallery."
 <style type="text/css">
 /* <![CDATA[ */
 body {
- background:#000;
- color:#ccc;
+ background:#ffd1dc;
+ color:#0000;
  margin:0 0 0 12pt;
  font-family:Optima, sans-serif;
  font-size:16pt;
@@ -68,12 +68,11 @@ a {
 <script type="text/javascript">
 
 var t = 0,
-first = ['DARLING', 'DEAR', 'HONEY', 'JEWEL'],
-second = ['DUCK', 'LOVE', 'MOPPET', 'SWEETHEART'],
-adjectives = ['ADORABLE', 'AFFECTIONATE', 'AMOROUS', 'ANXIOUS', 'ARDENT', 'AVID', 'BREATHLESS', 'BURNING', 'COVETOUS', 'CRAVING', 'CURIOUS', 'DARLING', 'DEAR', 'DEVOTED', 'EAGER', 'EROTIC', 'FERVENT', 'FOND', 'IMPATIENT', 'KEEN', 'LITTLE', 'LOVEABLE', 'LOVESICK', 'LOVING', 'PASSIONATE', 'PRECIOUS', 'SWEET', 'SYMPATHETIC', 'TENDER', 'UNSATISFIED', 'WISTFUL'],
-nouns = ['ADORATION', 'AFFECTION', 'AMBITION', 'APPETITE', 'ARDOUR', 'CHARM', 'DESIRE', 'DEVOTION', 'EAGERNESS', 'ENCHANTMENT', 'ENTHUSIASM', 'FANCY', 'FELLOW FEELING', 'FERVOUR', 'FONDNESS', 'HEART', 'HUNGER', 'INFATUATION', 'LIKING', 'LONGING', 'LOVE', 'LUST', 'PASSION', 'RAPTURE', 'SYMPATHY', 'TENDERNESS', 'THIRST', 'WISH', 'YEARNING'],
-adverbs = ['AFFECTIONATELY', 'ANXIOUSLY', 'ARDENTLY', 'AVIDLY', 'BEAUTIFULLY', 'BREATHLESSLY', 'BURNINGLY', 'COVETOUSLY', 'CURIOUSLY', 'DEVOTEDLY', 'EAGERLY', 'FERVENTLY', 'FONDLY', 'IMPATIENTLY', 'KEENLY', 'LOVINGLY', 'PASSIONATELY', 'SEDUCTIVELY', 'TENDERLY', 'WINNINGLY', 'WISTFULLY'],
-verbs = ['ADORES', 'ATTRACTS', 'CARES FOR', 'CHERISHES', 'CLINGS TO', 'DESIRES','HOLDS DEAR', 'HOPES FOR', 'HUNGERS FOR', 'IS WEDDED TO', 'LIKES', 'LONGS FOR', 'LOVES', 'LUSTS AFTER', 'PANTS FOR', 'PINES FOR', 'PRIZES', 'SIGHS FOR', 'TEMPTS', 'THIRSTS FOR', 'TREASURES', 'WANTS', 'WISHES', 'WOOS', 'YEARNS FOR'];
+name = ['Chris', 'Anthony', 'Sarah', 'Karen', 'Suzie'],
+activity = ['Paragliding', 'Jetsking', 'Playing Football', 'Clubbing', 'Playing Jenga', 'Shopping','Travelling', 'Dismantiling Corrupt Regimes', 'adventuring', 'climbing mountains', 'extracting mummies', 'doing barely legal things', 'cloudgazing', 'cow tipping', 'eating ice cream', 'eating chicken wings', 'watching foreign films'],
+feeling = ['Grateful', 'Appreciative', 'Happy', 'Excited', 'Ecstatic', 'Giddy'],
+tease = ['drunk friend', 'clown', 'monkey', 'smelly dude', 'funny-looking person', 'irritable buddy'],
+compliment= ['favotite person', 'indespensible buddy', 'partner in crime', 'future bridesmaid', 'unforgettable friend'],
 
 function rand_range(maximum) {
     "use strict";
@@ -92,16 +91,16 @@ function maybe(words) {
 }
 function longer() {
     "use strict";
-    return ' MY' + maybe(adjectives) + ' ' + choose(nouns) + maybe(adverbs) + ' ' + choose(verbs) + ' YOUR' + maybe(adjectives) + ' ' + choose(nouns) + '.';
+    return ' I' + maybe(adjectives) + ' ' + choose(nouns) + maybe(adverbs) + ' ' + choose(verbs) + ' YOUR' + maybe(adjectives) + ' ' + choose(nouns) + '.';
 }
 function shorter() {
     "use strict";
-    return ' ' + choose(adjectives) + ' ' + choose(nouns) + '.';
+    return ' ' + 'You are my ' + maybe(tease+ 'and my') + choose(compliment)' + '.' ;
 }
 function letter() {
     "use strict";
     var i, type, you_are = false, text = '';
-    text = text + choose(first) + ' ' + choose(second) + '<br /><br />';
+    text = text + 'dear' + ' ' + choose(name) + '<br /><br />';
 
     for (i = 0; i < 5; i = i + 1) {
         type = choose(['longer', 'shorter']);
@@ -110,10 +109,10 @@ function letter() {
             you_are = false;
         } else {
             if (you_are) {
-                text = text.slice(0, -1) + ': MY' + shorter();
+                text = text.slice(0, -1) + shorter();
                 you_are = false;
             } else {
-                text = text + ' YOU ARE MY' + shorter();
+                text = text + shorter();
                 you_are = true;
             }
         }
