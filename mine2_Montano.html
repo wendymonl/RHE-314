@@ -30,8 +30,8 @@ Updated 28 August 2019 to add a link to "The Ferranti Mark 1 Gallery."
 <style type="text/css">
 /* <![CDATA[ */
 body {
- background:#ccc;
- color:#000;
+ background:#000;
+ color:#ccc;
  margin:0 0 0 12pt;
  font-family:Optima, sans-serif;
  font-size:16pt;
@@ -72,7 +72,7 @@ name = ['Chris', 'Anthony', 'Sarah', 'Karen', 'Suzie'],
 activity = ['Paragliding', 'Jetsking', 'Playing Football', 'Clubbing', 'Playing Jenga', 'Shopping','Travelling', 'Dismantiling Corrupt Regimes', 'adventuring', 'climbing mountains', 'extracting mummies', 'doing barely legal things', 'cloudgazing', 'cow tipping', 'eating ice cream', 'eating chicken wings', 'watching foreign films'],
 feeling = ['Grateful', 'Appreciative', 'Happy', 'Excited', 'Ecstatic', 'Giddy'],
 tease = ['drunk friend', 'clown', 'monkey', 'smelly dude', 'funny-looking person', 'irritable buddy'],
-compliment= ['favotite person', 'indespensible buddy', 'partner in crime', 'future bridesmaid', 'unforgettable friend'];
+compliment = ['favotite person', 'indespensible buddy', 'partner in crime', 'future bridesmaid', 'unforgettable friend'];
 
 function rand_range(maximum) {
     "use strict";
@@ -81,13 +81,6 @@ function rand_range(maximum) {
 function choose(array) {
     "use strict";
     return array[rand_range(array.length - 1)];
-}
-function maybe(words) {
-    "use strict";
-    if (Math.random() > 0.5) {
-        return ' ' + choose(words);
-    }
-    return '';
 }
 function longer() {
     "use strict";
@@ -99,20 +92,25 @@ function shorter() {
 }
 function letter() {
     "use strict";
-    var i, type, text = '';
-    text = text + 'Der' + ' ' + choose(name) + '<br /><br />';
+    var i, type, you_are = false, text = '';
+    text = text + 'Dear' + ' ' + choose(name) + '<br /><br />';
 
     for (i = 0; i < 5; i = i + 1) {
         type = choose(['longer', 'shorter']);
         if (type === 'longer') {
-            text = text + longer() + shorter();
-            } 
-        else {
-            text = text + shorter();
+            text = text + longer();
+            you_are = false;
+        } else {
+            if (you_are) {
+                text = text.slice(0, -1) + shorter();
+                you_are = false;
+            } else {
+                text = text + shorter();
+                you_are = true;
             }
         }
     }
-    text = text + '<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOURS ' + choose(adverbs) + '<br /><br />' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wendy Montano';
+    text = text + '<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOURS ' + choose(adverbs) + '<br /><br />' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M.U.C.';
     return text;
 }
 function litany() {
