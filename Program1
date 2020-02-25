@@ -1,0 +1,21 @@
+#this program simuates the rolling of a dice. This is an example of how users can interact with programs we make, and how user input can be used to create loops. The program keeps running until the user rolls a 1, or they can stop it if they enter 'no'
+import random
+r=0
+print('Let'+"'"+'s play a game. I wil let you will roll a dice, and if you roll a 1, you win a prize!')
+a=str(raw_input('Do you want to roll the dice? (yes or no) '))
+if a!= 'yes' and a!= 'no':
+        print('Not valid input. Please enter either yes or no') #they get this message if they input anything besides 'yes' or 'no'
+tries=1 #if they enter yes, the dice will be rolled at least once
+while a=='yes' and r!= 1: #roll dice if the user inputs 'yes', and if they haven't already rolled 1. 
+    r=random.randint(1,6) #generates random number from 1 to 6
+    if r==int(1):
+        print('You rolled a 1!')
+        print ('It took you ' +str(tries) + ' roll(s) to win. The prize is that this program will stop running.')
+        break
+    else:
+        print('You rolled a '+str(r)+'.')
+        print('I will let you roll again.')
+        tries=tries+1
+    a=str(raw_input('Do you want to roll the dice again? (yes or no) ')) #require user to say yes to continue
+if a == 'no': #the user can stop the program is by entering 'no'
+    print('Okay, have a nice day. You will never know what the prize was.')
