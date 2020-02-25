@@ -1,21 +1,23 @@
-#this program simuates the rolling of a dice. This is an example of how users can interact with programs we make, and how user input can be used to create loops. The program keeps running until the user rolls a 1, or they can stop it if they enter 'no'
-import random
+#This program combines the concepts of user inputs and loops. It's a simple dice game where the user wins if they roll a 1. The user will be prompted to roll until either a they roll a 1, or they enter 'no'.
+#For a novice programer like me, it's important to understand how to set up loops that users will intereact with.
+#I had to account for users making typos when prompted. If they type anything other than 'yes' or 'no', they will recieve an error message and be promted to roll again. 
 r=0
 print('Let'+"'"+'s play a game. I wil let you will roll a dice, and if you roll a 1, you win a prize!')
-a=str(raw_input('Do you want to roll the dice? (yes or no) '))
-if a!= 'yes' and a!= 'no':
-        print('Not valid input. Please enter either yes or no') #they get this message if they input anything besides 'yes' or 'no'
-tries=1 #if they enter yes, the dice will be rolled at least once
-while a=='yes' and r!= 1: #roll dice if the user inputs 'yes', and if they haven't already rolled 1. 
-    r=random.randint(1,6) #generates random number from 1 to 6
-    if r==int(1):
-        print('You rolled a 1!')
-        print ('It took you ' +str(tries) + ' roll(s) to win. The prize is that this program will stop running.')
+tries=0 #if they enter yes, the dice will be rolled at least once
+while r!= 1: #Prompt user to roll dice on a loop if they haven't already rolled a 1.  
+    a=str(raw_input('Do you want to roll the dice? (yes or no) '))
+    if a!= 'yes' and a!= 'no': #they get an error message if they input anything besides 'yes' or 'no', but the loop doesn't break
+        print('Not valid input. Please enter either yes or no')
+    if a == 'no': #the user can stop the loop by entering 'no'
+        print('Okay, have a nice day. You will never know what the prize was.')
         break
-    else:
-        print('You rolled a '+str(r)+'.')
-        print('I will let you roll again.')
+    if a=='yes': 
+        r=random.randint(1,6) #generates random number from 1 to 6, and stores as variable 'r'
         tries=tries+1
-    a=str(raw_input('Do you want to roll the dice again? (yes or no) ')) #require user to say yes to continue
-if a == 'no': #the user can stop the program is by entering 'no'
-    print('Okay, have a nice day. You will never know what the prize was.')
+        if r==int(1): 
+            print('You rolled a 1!')
+            print ('It took you ' +str(tries) + ' roll(s) to win. The prize is that this program will stop running.')
+            break
+        else:
+            print('You rolled a '+str(r)+'.')
+            print('I will let you roll again.')
