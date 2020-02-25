@@ -2,7 +2,7 @@
 #For a novice programer like me, it's important to understand how to set up loops that users will intereact with.
 #I had to account for users making typos when prompted. If they type anything other than 'yes' or 'no', they will recieve an error message and be promted to roll again. 
 r=0
-print('Let'+"'"+'s play a game. I wil let you will roll a dice, and if you roll a 1, you win a prize!')
+print('Let'+"'"+'s play a dice game. If you roll a 1, you win a prize!')
 tries=0 #if they enter yes, the dice will be rolled at least once
 while r!= 1: #Prompt user to roll dice on a loop if they haven't already rolled a 1.  
     a=str(raw_input('Do you want to roll the dice? (yes or no) '))
